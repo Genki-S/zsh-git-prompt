@@ -52,6 +52,9 @@ else:
 		ahead = len([x for x in behead if x[0]=='>'])
 		behind = len(behead) - ahead
 
+nb_stash = len(Popen(['git','stash','list'], stdout=PIPE).communicate()[0].splitlines())
+stash = str(nb_stash)
+
 out = ' '.join([
 	branch,
 	str(ahead),
@@ -60,6 +63,6 @@ out = ' '.join([
 	conflicts,
 	changed,
 	untracked,
+	stash
 	])
 print(out, end='')
-
